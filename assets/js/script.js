@@ -3,6 +3,7 @@ var startGameBtn = document.getElementById("start-game");
 var question = document.getElementById("question");
 var answers = document.getElementById("answer-options");
 var welcome = document.getElementById("welcome");
+var highScores = document.getElementById("highscore");
 
 
 var li1 = document.getElementById("a");
@@ -28,6 +29,10 @@ startGameBtn.addEventListener("click", function() {
 
                 answers.addEventListener("click", function() {
                     questionAnswer(question5, answers5);
+
+                    answers.addEventListener("click", function() {
+                        
+                    })
                 })
             })
         })
@@ -66,19 +71,22 @@ function questionAnswer(questionStr, answersStr) {
 
 
 
+
+
 var question1 = "How many Super Bowls have the Jets won?";
 var answers1 = ["1", "2", "3", "4"];
 
 var question2 = "Who was the Jets Quarterback when they won Super Bowl III?";
 var answers2 = ["Chad Pennington", "Vinny Testeverde", "Joe Namath", "Ray Lucas"];
 
-var question3 = "Who is the Jets all-time leading rusher?"
-var answers3 = ["Thomas Jones", "Curtis Martin", "Leon Washington", "John Riggins"]
+var question3 = "Who is the Jets all-time leading rusher?";
+var answers3 = ["Thomas Jones", "Curtis Martin", "Leon Washington", "John Riggins"];
 
+var question4 = "In what year was the franchise founded? (Hint: they were known as the Titans";
+var answers4 = ["1946", "1959", "1966", "1970"];
 
-
-
-console.log(answers1[0])
+var question5 = "Who is the Jets current Head Coach?";
+var answers5 = ["Todd Bowles", "Rex Ryan", "Mike LaFleur", "Robert Saleh"];
 
 
 
