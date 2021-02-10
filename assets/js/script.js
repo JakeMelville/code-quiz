@@ -31,7 +31,7 @@ startGameBtn.addEventListener("click", function() {
                     questionAnswer(question5, answers5);
 
                     answers.addEventListener("click", function() {
-                        
+                        href="highscores.html"
                     })
                 })
             })
