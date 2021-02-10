@@ -4,6 +4,7 @@ var question = document.getElementById("question");
 var answers = document.getElementById("answer-options");
 var welcome = document.getElementById("welcome");
 
+
 var li1 = document.getElementById("a");
 var li2 = document.getElementById("b");
 var li3 = document.getElementById("c");
@@ -14,14 +15,27 @@ var li4 = document.getElementById("d");
 startGameBtn.addEventListener("click", function() {
     countdown();
     welcome.style.display = "none";
-    questionAnswer(question1, answers1)
+    questionAnswer(question1, answers1);
 
-    
+    answers.addEventListener("click", function() {
+        questionAnswer(question2, answers2);
+
+        answers.addEventListener("click", function() {
+            questionAnswer(question3, answers3);
+
+            answers.addEventListener("click", function() {
+                questionAnswer(question4, answers4);
+
+                answers.addEventListener("click", function() {
+                    questionAnswer(question5, answers5);
+                })
+            })
+        })
+    })
+})    
 
 
 
-
-})
 
 function countdown() {
     var timeleft = 60;
@@ -54,6 +68,15 @@ function questionAnswer(questionStr, answersStr) {
 
 var question1 = "How many Super Bowls have the Jets won?";
 var answers1 = ["1", "2", "3", "4"];
+
+var question2 = "Who was the Jets Quarterback when they won Super Bowl III?";
+var answers2 = ["Chad Pennington", "Vinny Testeverde", "Joe Namath", "Ray Lucas"];
+
+var question3 = "Who is the Jets all-time leading rusher?"
+var answers3 = ["Thomas Jones", "Curtis Martin", "Leon Washington", "John Riggins"]
+
+
+
 
 console.log(answers1[0])
 
