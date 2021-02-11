@@ -1,30 +1,32 @@
-var timerEl = $("#timer");
+var timerEl = $("#timer");   //timer variable using j query
 
-var startGameBtn = document.getElementById("start-game");
+var startGameBtn = document.getElementById("start-game"); //these are my 2 buttons, nextBtn hidden until start game is pressed
 var nextBtn = document.getElementById("next");
 nextBtn.style.display = "none";
 
-var questionEl = document.getElementById("question");
+var questionEl = document.getElementById("question");  //this is where my question will show
 
 var welcome = document.getElementById("welcome");
 
 var highScores = document.getElementById("highscore");
 
-var formQ1 = document.getElementById("q1");
+var formQ1 = document.getElementById("q1");         //this is where my answers are stored- ran out of time didnt get to finish
 formQ1.style.display = "none";
+
+
 var correct = 0
 
-var questionIndex = 0;
+var questionIndex = 0;      //start index at zero- when the nextBtn is clicked questionIndex++; i then use this number for my if statements 
 var answerOtionsIndex = 0;
 
-var questions = [
+var questions = [     //questions stored as an array of strings
     "How many Super Bowls have the Jets won?",
     "Who was the Jets Quarterback when they won Super Bowl III?",
     "Who is the Jets all-time leading rusher?",
     "In what year was the franchise founded? (Hint: they were known as the Titans",
     "Who is the Jets current Head Coach?"
 ]
-var answerOptions = [
+var answerOptions = [    //answers stored in an array of arrays
     ["1", "2", "3", "4"],
     ["Chad Pennington", "Vinny Testeverde", "Joe Namath", "Ray Lucas"],
     ["Thomas Jones", "Curtis Martin", "Leon Washington", "John Riggins"],
@@ -38,9 +40,9 @@ console.log(answerOptions);
 // console.log(questions[0])
 
 
-startGameBtn.addEventListener('click', gameLogic);
-nextBtn.addEventListener('click', function () {
-    questionIndex++;
+startGameBtn.addEventListener('click', gameLogic);   //start button initiates the game
+nextBtn.addEventListener('click', function () {        //nextBtn cylces through the questions
+    questionIndex++;  
     console.log(questionIndex);
 });
 
@@ -49,8 +51,8 @@ nextBtn.addEventListener('click', function () {
 console.log(typeof questionIndex)
 
 
-function gameLogic() {
-    countdown();
+function gameLogic() {    //this function runs when the start button is pressed
+    countdown();            //this is my timer countdown 
     welcome.style.display = "none";
     formQ1.style.display = "table-row";
     nextBtn.style.display = "block";
@@ -58,23 +60,30 @@ function gameLogic() {
 }
 
 
-function rendersNextQuestion() {
-
+function rendersNextQuestion() { //how I determine which questions will show when. 
+                                        //all these if's are checking my questionIndex variable (this variable increases by 1 everytime the nextBtn is clicked)
     if (questionIndex === 0) {
-        questionEl.textContent = questions[0];  
+        questionEl.textContent = questions[0]; 
+        formQ1.textContent = answerOptions[0]; 
     }
     if (questionIndex === 1) {
         questionEl.textContent = questions[1];
+        formQ1.textContent = answerOptions[1];
     }
-
     if (questionIndex === 2) {
         questionEl.textContent = questions[2];
+        formQ1.textContent = answerOptions[2];
     }
     if (questionIndex === 3) {
-    questionEl.textContent = questions[3];
+        questionEl.textContent = questions[3];
+        formQ1.textContent = answerOptions[3];
     }   
     if (questionIndex === 4) {
-    questionEl.textContent = questions[4];
+        questionEl.textContent = questions[4];
+        formQ1.textContent = answerOptions[4];
+    }
+    if (questionIndex === 5) {
+        href="highscore.html"
     }
 }
 // var currentQuestion = questions[questionIndex];
@@ -82,8 +91,10 @@ function rendersNextQuestion() {
 //     console.log(currentQuestion);
 // }
 
+console.log(answerOptions[4][0]);
 
-function countdown() {
+
+function countdown() {              //countdown function created using set interval
     var timeleft = 60;
     var timeInterval = setInterval(function () {
         if (timeleft > 1) {
@@ -101,6 +112,11 @@ function countdown() {
         }
     }, 1000);
 }
+
+// everything below is code that I was messing around with trying to get his quiz to work.
+
+
+
 
 
 
