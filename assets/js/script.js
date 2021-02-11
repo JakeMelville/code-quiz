@@ -1,19 +1,12 @@
 var timerEl = $("#timer");   //timer variable using j query
-
 var startGameBtn = document.getElementById("start-game"); //these are my 2 buttons, nextBtn hidden until start game is pressed
 var nextBtn = document.getElementById("next");
 nextBtn.style.display = "none";
-
 var questionEl = document.getElementById("question");  //this is where my question will show
-
 var welcome = document.getElementById("welcome");
-
 var highScores = document.getElementById("highscore");
-
-var formQ1 = document.getElementById("q1");         //this is where my answers are stored- ran out of time didnt get to finish
-formQ1.style.display = "none";
-
-
+var qA = document.querySelector(".question-answer");
+var endGame = document.getElementById(".end-game");
 var correct = 0
 
 var questionIndex = 0;      //start index at zero- when the nextBtn is clicked questionIndex++; i then use this number for my if statements 
@@ -49,17 +42,17 @@ var questions = [
 
 function setQuestion() {
     for (var i = 0; i <questions.length; i++) {
-        console.log
+        var createQuestion = document.createElement("p");
+        questionEl.textContent = questions[i].createQuestion;
+        
     }
 }
-
 
 function startGame() {    //this function runs when the start button is pressed
     countdown();            //this is my timer countdown 
     welcome.style.display = "none";
-    formQ1.style.display = "table-row";
-    nextBtn.style.display = "block";
-    rendersNextQuestion();
+    nextBtn.style.display = "flex";
+    setQuestion();
 }
 
 function countdown() {              //countdown function created using set interval
@@ -73,6 +66,9 @@ function countdown() {              //countdown function created using set inter
             timerEl.text(timeleft + " second");
             timeleft--;
         }
+        else if (timeLeft === 0) {
+            quizEnd();
+        }
         else {
             timerEl.text("");
             clearInterval(timeInterval);
@@ -81,7 +77,11 @@ function countdown() {              //countdown function created using set inter
     }, 1000);
 }
 
-
+function quizEnd () {
+    qA.stlye.display = "none";
+    endGame.style.display = "flex";
+    
+}
 
 startGameBtn.addEventListener('click', startGame);   //start button initiates the game
 nextBtn.addEventListener('click', function () {        //nextBtn cylces through the questions

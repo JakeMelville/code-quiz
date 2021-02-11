@@ -13,6 +13,8 @@
 
 <!-- styled body using bootstrap -->
 <body>
+
+  <!-- link to high scores & timer -->
   <header class="container bg-">
     <nav class="flex-row d-flex justify-content-between">
       <a class="col ml-5" id="highscores" href="highscore.html">High Scores</a>
@@ -20,6 +22,7 @@
     </nav>
   </header>
 
+  <!-- welcome to page and explains the rules -->
   <section class="container" id="welcome">
     <div class="row justify-content-center">
       <div class="col-12 col-md-9 col-lg-6">
@@ -30,20 +33,26 @@
     </div>
   </section>
 
-  <section class="container">
+  <!-- questions and answers -->
+  <section class="container question-answer">
     <div class="row justify-content-center">
-      <h1 id="question"></h1>    
+      <div>
+        <p id="question">Question</p>
+      </div>  
+      <div>
+        <p id="answers"></p>
+      </div>  
     </div>
     <div class="row justify-content-center quiz-wrapper">
-      
-<!-- set this button to run function renderedNextQuestion everytime its clicked -->
-      <button onclick="rendersNextQuestion()" id="next" class="btn">Next</button>
+      <button id="next" class="btn">Next</button>
     </div>
   </section>
 
-  
+<!-- end page -->
+  <section class="end-game hide">
+    <h1>GAME OVER</h1>
 
-
+  </section>
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.js"
