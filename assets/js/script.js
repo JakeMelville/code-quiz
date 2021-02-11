@@ -1,77 +1,88 @@
 var timerEl = $("#timer");
+
 var startGameBtn = document.getElementById("start-game");
+var nextBtn = document.getElementById("next");
+nextBtn.style.display = "none";
+
 var questionEl = document.getElementById("question");
-var answersEl = document.getElementById("answer-options");
+
 var welcome = document.getElementById("welcome");
+
 var highScores = document.getElementById("highscore");
 
+var formQ1 = document.getElementById("q1");
+formQ1.style.display = "none";
 var correct = 0
 
-var li0 = document.getElementById("a");
-var li1 = document.getElementById("b");
-var li2 = document.getElementById("c");
-var li3 = document.getElementById("d");
+var questionIndex = 0;
+var answerOtionsIndex = 0;
 
 var questions = [
-    {
-        question: "How many Super Bowls have the Jets won?",
-        answers: ["1", "2", "3", "4"],
-        correctAnswer: 0
-    },
-    {
-        question: "Who was the Jets Quarterback when they won Super Bowl III?",
-        answers: ["Chad Pennington", "Vinny Testeverde", "Joe Namath", "Ray Lucas"],
-        correctAnswer: 2
-    },
-    {
-        question: "Who is the Jets all-time leading rusher?",
-        answers: ["Thomas Jones", "Curtis Martin", "Leon Washington", "John Riggins"],
-        correctAnswer: 1
-    },
-    {
-        question: "In what year was the franchise founded? (Hint: they were known as the Titans",
-        answers: ["1946", "1959", "1966", "1970"],
-        correctAnswer: 1
-    },
-    {
-        question: "Who is the Jets current Head Coach?",
-        answers: ["Todd Bowles", "Rex Ryan", "Mike LaFleur", "Robert Saleh"],
-        correctAnswer: 3
-    }
+    "How many Super Bowls have the Jets won?",
+    "Who was the Jets Quarterback when they won Super Bowl III?",
+    "Who is the Jets all-time leading rusher?",
+    "In what year was the franchise founded? (Hint: they were known as the Titans",
+    "Who is the Jets current Head Coach?"
 ]
+var answerOptions = [
+    ["1", "2", "3", "4"],
+    ["Chad Pennington", "Vinny Testeverde", "Joe Namath", "Ray Lucas"],
+    ["Thomas Jones", "Curtis Martin", "Leon Washington", "John Riggins"],
+    ["1946", "1959", "1966", "1970"],
+    ["Todd Bowles", "Rex Ryan", "Mike LaFleur", "Robert Saleh"]
+]
+
+console.log(answerOptions);
 
 // console.log(timerEl)
 // console.log(questions[0])
 
-//click events- everytime an answer is selected the next question qill pop up
-startGameBtn.addEventListener("click", gameLogic)
 
-var questionIndex = 0;
+startGameBtn.addEventListener('click', gameLogic);
+nextBtn.addEventListener('click', function () {
+    questionIndex++;
+    console.log(questionIndex);
+});
+
+
+
+console.log(typeof questionIndex)
+
 
 function gameLogic() {
     countdown();
     welcome.style.display = "none";
-
-    rendersNextQuestion();  
-
+    formQ1.style.display = "table-row";
+    nextBtn.style.display = "block";
+    rendersNextQuestion();
 }
+
 
 function rendersNextQuestion() {
-    var currentQuestion = questions[questionIndex];
-    var currentAnswers = currentQuestion.answers;
-   
-    questionEl.textContent = currentQuestion.question;
-    
-    $("li").get(questionIndex);
 
-    for (var i = 0; i < currentAnswers.length; i++) {
-        $("li").get(i).text(currentAnswers[i]);
+    if (questionIndex === 0) {
+        questionEl.textContent = questions[0];  
     }
-    // answersEl.textContent = currentQuestion.answers;
-}
-//attach an event listener, when the "next" button is click it calls rendered next q again; nedd quesitonIndex ++;
+    if (questionIndex === 1) {
+        questionEl.textContent = questions[1];
+    }
 
-//sets my timer- i run this funcion when the start-game button is clicked
+    if (questionIndex === 2) {
+        questionEl.textContent = questions[2];
+    }
+    if (questionIndex === 3) {
+    questionEl.textContent = questions[3];
+    }   
+    if (questionIndex === 4) {
+    questionEl.textContent = questions[4];
+    }
+}
+// var currentQuestion = questions[questionIndex];
+// for (var i = 0; i < questions.length; i++) {
+//     console.log(currentQuestion);
+// }
+
+
 function countdown() {
     var timeleft = 60;
     var timeInterval = setInterval(function () {
@@ -93,8 +104,11 @@ function countdown() {
 
 
 
+// answersEl.textContent = currentQuestion.answers;
 
+//attach an event listener, when the "next" button is click it calls rendered next q again; nedd quesitonIndex ++;
 
+//sets my timer- i run this funcion when the start-game button is clicked
 
 
 
@@ -115,26 +129,57 @@ function countdown() {
 
 
 
-  // questionAnswer(question1, answers1);
+// questionAnswer(question1, answers1);
 
-    //   answers.addEventListener("click", function() {
-    //     questionAnswer(question2, answers2);    
+//   answers.addEventListener("click", function() {
+//     questionAnswer(question2, answers2);    
 
-    //     answers.addEventListener("click", function() {
-    //         questionAnswer(question3, answers3);
+//     answers.addEventListener("click", function() {
+//         questionAnswer(question3, answers3);
 
-    //         answers.addEventListener("click", function() {
-    //             questionAnswer(question4, answers4);
-
-
-    //             answers.addEventListener("click", function() {
-    //                 questionAnswer(question5, answers5);
+//         answers.addEventListener("click", function() {
+//             questionAnswer(question4, answers4);
 
 
-    //                 answers.addEventListener("click", function() {
-    //                     //NEED TO LINK HERE TO HIGH SCORES PAGE
-    //                 })
-    //             })
-    //         })
-    //     })
-    // })
+//             answers.addEventListener("click", function() {
+//                 questionAnswer(question5, answers5);
+
+
+//                 answers.addEventListener("click", function() {
+//                     //NEED TO LINK HERE TO HIGH SCORES PAGE
+//                 })
+//             })
+//         })
+//     })
+// })
+
+
+
+
+    // var questions = [
+//     {
+//         question: "How many Super Bowls have the Jets won?",
+//         answers: ["1", "2", "3", "4"],
+//         correctAnswer: 0
+//     },
+//     {
+//         question: "Who was the Jets Quarterback when they won Super Bowl III?",
+//         answers: ["Chad Pennington", "Vinny Testeverde", "Joe Namath", "Ray Lucas"],
+//         correctAnswer: 2
+//     },
+//     {
+//         question: "Who is the Jets all-time leading rusher?",
+//         answers: ["Thomas Jones", "Curtis Martin", "Leon Washington", "John Riggins"],
+//         correctAnswer: 1
+//     },
+//     {
+//         question: "In what year was the franchise founded? (Hint: they were known as the Titans",
+//         answers: ["1946", "1959", "1966", "1970"],
+//         correctAnswer: 1
+//     },
+//     {
+//         question: "Who is the Jets current Head Coach?",
+//         answers: ["Todd Bowles", "Rex Ryan", "Mike LaFleur", "Robert Saleh"],
+//         correctAnswer: 3
+//     }
+// ]
