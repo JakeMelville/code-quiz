@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Quiz</title>
+    <style>
+        .hide {
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <!-- anchor link to highscores html page  -->
+    <a id="view" href="highscores.html">view highscores</a>
+    <!-- div timer ticks down -->
+    <div id="timer"></div>
+
+
+    <!-- start page or landing page -->
+    <div id="start page" class="start">
+        <h1>Welcome to quiz</h1>
+        <h2>You have 60 seconds</h2>
+        <button id="start-game"></button>
+    </div>
+
+
+    <!-- questions and choices -->
+    <div id="questions" class="hide">
+        <div id="question"></div>
+        <div id="choices"></div>
+    </div>
+
+
+     <!-- end page where you see results and type in initials -->
+     <div id="end-screen" class="hide">
+        <h1>ALl done</h1>
+        <p>your final score is: <span id="score"></span></p>
+        <p>Enter your intials: <input type="text" id="initials"></p>
+        <button id="submit">Submit</button>
+     </div>
+
+
+</body>
+</html>

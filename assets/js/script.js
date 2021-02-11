@@ -19,80 +19,48 @@ var correct = 0
 var questionIndex = 0;      //start index at zero- when the nextBtn is clicked questionIndex++; i then use this number for my if statements 
 var answerOtionsIndex = 0;
 
-var questions = [     //questions stored as an array of strings
-    "How many Super Bowls have the Jets won?",
-    "Who was the Jets Quarterback when they won Super Bowl III?",
-    "Who is the Jets all-time leading rusher?",
-    "In what year was the franchise founded? (Hint: they were known as the Titans",
-    "Who is the Jets current Head Coach?"
+var questions = [
+    {
+        question: "How many Super Bowls have the Jets won?",
+        answers: ["1", "2", "3", "4"],
+        correctAnswer: 0
+    },
+    {
+        question: "Who was the Jets Quarterback when they won Super Bowl III?",
+        answers: ["Chad Pennington", "Vinny Testeverde", "Joe Namath", "Ray Lucas"],
+        correctAnswer: 2
+    },
+    {
+        question: "Who is the Jets all-time leading rusher?",
+        answers: ["Thomas Jones", "Curtis Martin", "Leon Washington", "John Riggins"],
+        correctAnswer: 1
+    },
+    {
+        question: "In what year was the franchise founded? (Hint: they were known as the Titans",
+        answers: ["1946", "1959", "1966", "1970"],
+        correctAnswer: 1
+    },
+    {
+        question: "Who is the Jets current Head Coach?",
+        answers: ["Todd Bowles", "Rex Ryan", "Mike LaFleur", "Robert Saleh"],
+        correctAnswer: 3
+    }
 ]
-var answerOptions = [    //answers stored in an array of arrays
-    ["1", "2", "3", "4"],
-    ["Chad Pennington", "Vinny Testeverde", "Joe Namath", "Ray Lucas"],
-    ["Thomas Jones", "Curtis Martin", "Leon Washington", "John Riggins"],
-    ["1946", "1959", "1966", "1970"],
-    ["Todd Bowles", "Rex Ryan", "Mike LaFleur", "Robert Saleh"]
-]
 
-console.log(answerOptions);
-
-// console.log(timerEl)
-// console.log(questions[0])
+function setQuestion() {
+    for (var i = 0; i <questions.length; i++) {
+        console.log
+    }
+}
 
 
-startGameBtn.addEventListener('click', gameLogic);   //start button initiates the game
-nextBtn.addEventListener('click', function () {        //nextBtn cylces through the questions
-    questionIndex++;  
-    console.log(questionIndex);
-});
-
-
-
-console.log(typeof questionIndex)
-
-
-function gameLogic() {    //this function runs when the start button is pressed
+function startGame() {    //this function runs when the start button is pressed
     countdown();            //this is my timer countdown 
     welcome.style.display = "none";
     formQ1.style.display = "table-row";
     nextBtn.style.display = "block";
     rendersNextQuestion();
 }
-
-
-function rendersNextQuestion() { //how I determine which questions will show when. 
-                                        //all these if's are checking my questionIndex variable (this variable increases by 1 everytime the nextBtn is clicked)
-    if (questionIndex === 0) {
-        questionEl.textContent = questions[0]; 
-        formQ1.textContent = answerOptions[0]; 
-    }
-    if (questionIndex === 1) {
-        questionEl.textContent = questions[1];
-        formQ1.textContent = answerOptions[1];
-    }
-    if (questionIndex === 2) {
-        questionEl.textContent = questions[2];
-        formQ1.textContent = answerOptions[2];
-    }
-    if (questionIndex === 3) {
-        questionEl.textContent = questions[3];
-        formQ1.textContent = answerOptions[3];
-    }   
-    if (questionIndex === 4) {
-        questionEl.textContent = questions[4];
-        formQ1.textContent = answerOptions[4];
-    }
-    if (questionIndex === 5) {
-        href="highscore.html"
-    }
-}
-// var currentQuestion = questions[questionIndex];
-// for (var i = 0; i < questions.length; i++) {
-//     console.log(currentQuestion);
-// }
-
-console.log(answerOptions[4][0]);
-
 
 function countdown() {              //countdown function created using set interval
     var timeleft = 60;
@@ -112,6 +80,50 @@ function countdown() {              //countdown function created using set inter
         }
     }, 1000);
 }
+
+
+
+startGameBtn.addEventListener('click', startGame);   //start button initiates the game
+nextBtn.addEventListener('click', function () {        //nextBtn cylces through the questions
+    questionIndex++;
+    console.log(questionIndex);
+});
+
+
+// function rendersNextQuestion() { //how I determine which questions will show when. 
+//     //all these if's are checking my questionIndex variable (this variable increases by 1 everytime the nextBtn is clicked)
+//     if (questionIndex === 0) {
+//         questionEl.textContent = questions[0];
+//         formQ1.textContent = answerOptions[0];
+//     }
+//     if (questionIndex === 1) {
+//         questionEl.textContent = questions[1];
+//         formQ1.textContent = answerOptions[1];
+//     }
+//     if (questionIndex === 2) {
+//         questionEl.textContent = questions[2];
+//         formQ1.textContent = answerOptions[2];
+//     }
+//     if (questionIndex === 3) {
+//         questionEl.textContent = questions[3];
+//         formQ1.textContent = answerOptions[3];
+//     }
+//     if (questionIndex === 4) {
+//         questionEl.textContent = questions[4];
+//         formQ1.textContent = answerOptions[4];
+//     }
+//     if (questionIndex === 5) {
+//         href = "highscore.html"
+//     }
+// }
+// var currentQuestion = questions[questionIndex];
+// for (var i = 0; i < questions.length; i++) {
+//     console.log(currentQuestion);
+// }
+
+// console.log(answerOptions[4][0]);
+
+
 
 // everything below is code that I was messing around with trying to get his quiz to work.
 
@@ -172,7 +184,7 @@ function countdown() {              //countdown function created using set inter
 
 
 
-    // var questions = [
+// var questions = [
 //     {
 //         question: "How many Super Bowls have the Jets won?",
 //         answers: ["1", "2", "3", "4"],
@@ -199,3 +211,20 @@ function countdown() {              //countdown function created using set inter
 //         correctAnswer: 3
 //     }
 // ]
+
+// var questions = [     //questions stored as an array of strings
+//     "How many Super Bowls have the Jets won?",
+//     "Who was the Jets Quarterback when they won Super Bowl III?",
+//     "Who is the Jets all-time leading rusher?",
+//     "In what year was the franchise founded? (Hint: they were known as the Titans",
+//     "Who is the Jets current Head Coach?"
+// ]
+// var answerOptions = [    //answers stored in an array of arrays
+//     ["1", "2", "3", "4"],
+//     ["Chad Pennington", "Vinny Testeverde", "Joe Namath", "Ray Lucas"],
+//     ["Thomas Jones", "Curtis Martin", "Leon Washington", "John Riggins"],
+//     ["1946", "1959", "1966", "1970"],
+//     ["Todd Bowles", "Rex Ryan", "Mike LaFleur", "Robert Saleh"]
+// ]
+
+// console.log(answerOptions);
