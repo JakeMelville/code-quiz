@@ -39,14 +39,17 @@ var questions = [
         correctAnswer: 3
     }
 ]
+console.log(questions[0].question);
 
 function setQuestion() {
     for (var i = 0; i <questions.length; i++) {
-        var createQuestion = document.createElement("p");
-        questionEl.textContent = questions[i].createQuestion;
         
+        var currentQuestion = questions[i];
+        $("#question").text(currentQuestion.question);
+
     }
 }
+
 
 function startGame() {    //this function runs when the start button is pressed
     countdown();            //this is my timer countdown 
@@ -84,10 +87,9 @@ function quizEnd () {
 }
 
 startGameBtn.addEventListener('click', startGame);   //start button initiates the game
-nextBtn.addEventListener('click', function () {        //nextBtn cylces through the questions
-    questionIndex++;
+nextBtn.addEventListener('click', setQuestion)       //nextBtn cylces through the question
     console.log(questionIndex);
-});
+
 
 
 // function rendersNextQuestion() { //how I determine which questions will show when. 
