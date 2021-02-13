@@ -41,14 +41,24 @@ var questions = [
 ]
 console.log(questions[0].question);
 
-function setQuestion() {
-    for (var i = 0; i <questions.length; i++) {
-        
-        var currentQuestion = questions[i];
+function setQuestion() {      
+        var currentQuestion = questions[questionIndex];
         $("#question").text(currentQuestion.question);
 
-    }
+        for (var i =0; i < currentQuestion.answers.length; i++) {
+            console.log(currentQuestion.answers[i]);
+           
+            var choicesbtn = document.createElement("button");
+            choicesbtn.setAttribute("data-answer", currentQuestion.answers[i]);
+            choicesbtn.textContent = currentQuestion.answers[i];
+            //put event listener in the button, clear whatever is inside, using hide 
+            $("#answers").append(choicesbtn);
+
+        }
+        questionIndex++;
+
 }
+
 
 
 function startGame() {    //this function runs when the start button is pressed
