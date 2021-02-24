@@ -19,6 +19,7 @@
   <header class="container bg-">
     <nav class="flex-row d-flex justify-content-between">
       <a class="col ml-5" id="highscores" href="highscore.html">High Scores</a>
+      <div class="counter">
       <span class="col" id="timer"></span>
     </nav>
   </header>
@@ -47,7 +48,8 @@
           <li button class="btn" id="ans-2"></li>
           <li button class="btn" id="ans-3"></li>
         </ul>
-        <h2></h2>
+        <h2 class="d-none" id="next-q">correct</h2>
+        <h2 class="d-none" id="q-next">incorrect</h2>
       </div>
     </div>
     <div class="row justify-content-center quiz-wrapper">

@@ -10,6 +10,9 @@ var correct = 0
 
 var questionIndex = 0;      //start index at zero- when the nextBtn is clicked questionIndex++; i then use this number for my if statements 
 var answerOptionsIndex = 0;
+var currentAnswersIndex = 0;
+
+
 var questions = [
     {
         question: "How many Super Bowls have the Jets won?",
@@ -37,7 +40,7 @@ var questions = [
         correctAnswer: 3
     }
 ]
-console.log(questions[0].question);
+console.log(questions[0].correctAnswer);
 
 
 function startGame() {    //this function runs when the start button is pressed
@@ -67,30 +70,101 @@ function countdown() {              //countdown function created using set inter
     }, 1000);
 }
 
-function setQuestion() {      
+var ans0 = document.getElementById("ans-0");
+var ans1 = document.getElementById("ans-1");
+var ans2 = document.getElementById("ans-2");
+var ans3 = document.getElementById("ans-3");
+var counter = document.querySelector(".counter");
+var nextQ = document.getElementById("next-q");
+var qNext = document.getElementById("q-next");
+
+var score = 0;
+
+function setQuestion() {
     var currentQuestion = questions[questionIndex];
     $("#question").text(currentQuestion.question);
-   var currentAnswers = questions[answerOptionsIndex]; 
+    var currentAnswers = questions[answerOptionsIndex];
+    var correctAnswerIndex = 0;
+    nextQ.classList.add("d-none");
+    qNext.classList.add("d-none");
 
-    for (var i = 0; i < 4; i++) { 
-       document.getElementById(`ans-${i}`).textContent = questions[answerOptionsIndex].answers[i];
+    for (var i = 0; i < 4; i++) {
+        document.getElementById(`ans-${i}`).textContent = questions[answerOptionsIndex].answers[i];
+        questions[questionIndex].correctAnswer
+    }
+    for (var j = 0; j < questions.length; j++) {
+        ans0.addEventListener("click", function () {
+            // console.log(correctAnswerIndex)
+            if (questions[j].correctAnswer === 0) {
+                console.log("correct answer", questions[j].correctAnswer)
+                nextQ.classList.remove("d-none")
+            }
+            else {
+                qNext.classList.remove("d-none")
+            }
+
+        })
+        ans1.addEventListener("click", function () {
+            if (questions[j].correctAnswer === 1) {
+                console.log("correct answer", questions[j].correctAnswer)
+                nextQ.classList.remove("d-none")
+            }
+            else {
+                qNext.classList.remove("d-none")
+            }
+
+        })
+        ans2.addEventListener("click", function () {
+            if (questions[j].correctAnswer === 2) {
+                console.log("correct answer", questions[j].correctAnswer)
+                nextQ.classList.remove("d-none")
+            }
+            else {
+                qNext.classList.remove("d-none")
+            }
+
+        })
+        ans3.addEventListener("click", function () {
+            if (questions[j].correctAnswer === 3) {
+                console.log("correct answer", questions[j].correctAnswer)
+                nextQ.classList.remove("d-none")
+            }
+            else {
+                qNext.classList.remove("d-none")
+            }
+
+        })
+
     }
 
-   
+    console.log(correctAnswerIndex)
 
     questionIndex++;
     answerOptionsIndex++;
-}
-  
+    correctAnswerIndex++;
 
+}
+
+console.log(typeof questions[0].correctAnswer)
 
 function quizEnd() {
     endGame.classList.remove("d-none");
 }
 
+
 startGameBtn.addEventListener('click', startGame);   //start button initiates the game
-nextBtn.addEventListener('click', setQuestion)       //nextBtn cylces through the question
-    console.log(questionIndex);
+nextBtn.addEventListener('click', setQuestion, counter)       //nextBtn cylces through the question
+
+
+// ans1.addEventListener("click", function() {
+//     console.log("ans-1 selected")
+// })
+// ans2.addEventListener("click", function() {
+//     console.log("ans-2 selected")
+// })
+// ans3.addEventListener("click", function() {
+//     console.log("ans-3 selected")
+// })
 
 
 
