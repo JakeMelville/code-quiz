@@ -2,7 +2,6 @@ var timerEl = $("#timer");   //timer variable using j query
 var startGameBtn = document.getElementById("start-game"); //these are my 2 buttons, nextBtn hidden until start game is pressed
 var nextBtn = document.getElementById("next");
 nextBtn.style.display = "none";
-var questionEl = document.getElementById("question");  //this is where my question will show
 var welcome = document.getElementById("welcome");
 var highScores = document.getElementById("highscore");
 var qA = document.querySelector(".question-answer");
@@ -10,8 +9,7 @@ var endGame = document.getElementById(".end-game");
 var correct = 0
 
 var questionIndex = 0;      //start index at zero- when the nextBtn is clicked questionIndex++; i then use this number for my if statements 
-var answerOtionsIndex = 0;
-
+var answerOptionsIndex = 0;
 var questions = [
     {
         question: "How many Super Bowls have the Jets won?",
@@ -41,25 +39,6 @@ var questions = [
 ]
 console.log(questions[0].question);
 
-function setQuestion() {      
-        var currentQuestion = questions[questionIndex];
-        $("#question").text(currentQuestion.question);
-
-        for (var i =0; i < currentQuestion.answers.length; i++) {
-            console.log(currentQuestion.answers[i]);
-           
-            var choicesbtn = document.createElement("button");
-            choicesbtn.setAttribute("data-answer", currentQuestion.answers[i]);
-            choicesbtn.textContent = currentQuestion.answers[i];
-            //put event listener in the button, clear whatever is inside, using hide 
-            $("#answers").append(choicesbtn);
-
-        }
-        questionIndex++;
-
-}
-
-
 
 function startGame() {    //this function runs when the start button is pressed
     countdown();            //this is my timer countdown 
@@ -79,26 +58,63 @@ function countdown() {              //countdown function created using set inter
             timerEl.text(timeleft + " second");
             timeleft--;
         }
-        else if (timeLeft === 0) {
-            quizEnd();
-        }
         else {
             timerEl.text("");
             clearInterval(timeInterval);
+            quizEnd();
 
         }
     }, 1000);
 }
 
-function quizEnd () {
-    qA.stlye.display = "none";
-    endGame.style.display = "flex";
-    
+function setQuestion() {      
+    var currentQuestion = questions[questionIndex];
+    $("#question").text(currentQuestion.question);
+   var currentAnswers = questions[answerOptionsIndex]; 
+
+    for (var i = 0; i < 4; i++) { 
+       document.getElementById(`ans-${i}`).textContent = questions[answerOptionsIndex].answers[i];
+    }
+
+   
+
+    questionIndex++;
+    answerOptionsIndex++;
+}
+  
+
+
+function quizEnd() {
+    endGame.classList.remove("d-none");
 }
 
 startGameBtn.addEventListener('click', startGame);   //start button initiates the game
 nextBtn.addEventListener('click', setQuestion)       //nextBtn cylces through the question
     console.log(questionIndex);
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // var choicesbtn = document.createElement("button");
+    // choicesbtn.setAttribute("data-answer", currentQuestion.answers[i]);
+    // choicesbtn.textContent = currentQuestion.answers[i];
+    // //put event listener in the button, clear whatever is inside, using hide 
+    // $("#answers").append(choicesbtn);
+
+
+
+
+
+
 
 
 
