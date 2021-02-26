@@ -80,6 +80,9 @@ var qNext = document.getElementById("q-next");
 
 var score = 0;
 
+console.log(ans0.value)
+
+
 function setQuestion() {
     var currentQuestion = questions[questionIndex];
     $("#question").text(currentQuestion.question);
@@ -89,60 +92,36 @@ function setQuestion() {
     qNext.classList.add("d-none");
 
     for (var i = 0; i < 4; i++) {
+        // console.log(questionIndex[i].answers);
         document.getElementById(`ans-${i}`).textContent = questions[answerOptionsIndex].answers[i];
         questions[questionIndex].correctAnswer
     }
-    for (var j = 0; j < questions.length; j++) {
-        ans0.addEventListener("click", function () {
-            // console.log(correctAnswerIndex)
-            if (questions[j].correctAnswer === 0) {
-                console.log("correct answer", questions[j].correctAnswer)
-                nextQ.classList.remove("d-none")
-            }
-            else {
-                qNext.classList.remove("d-none")
-            }
+    // ans0.addEventListener("click", function() {
+    //     selectionsArr.push(0);
+    //     // console.log(selectionsArr);
+    //     console.log("ans-0 selected")
+    // })
+    // ans1.addEventListener("click", function() {
+    //     console.log("ans-1 selected");
+    //     selectionsArr.push(1);
+    //     // console.log(selectionsArr);
+    // })
+    // ans2.addEventListener("click", function() {
+    //     console.log("ans-2 selected");
+    //     selectionsArr.push(2);
+    //     // console.log(selectionsArr);
+    // })
+    // ans3.addEventListener("click", function() {
+    //     console.log("ans-3 selected");
+    //     selectionsArr.push(3);
+    //     // console.log(selectionsArr);
+    // })
+    
 
-        })
-        ans1.addEventListener("click", function () {
-            if (questions[j].correctAnswer === 1) {
-                console.log("correct answer", questions[j].correctAnswer)
-                nextQ.classList.remove("d-none")
-            }
-            else {
-                qNext.classList.remove("d-none")
-            }
-
-        })
-        ans2.addEventListener("click", function () {
-            if (questions[j].correctAnswer === 2) {
-                console.log("correct answer", questions[j].correctAnswer)
-                nextQ.classList.remove("d-none")
-            }
-            else {
-                qNext.classList.remove("d-none")
-            }
-
-        })
-        ans3.addEventListener("click", function () {
-            if (questions[j].correctAnswer === 3) {
-                console.log("correct answer", questions[j].correctAnswer)
-                nextQ.classList.remove("d-none")
-            }
-            else {
-                qNext.classList.remove("d-none")
-            }
-
-        })
-
-    }
-
-    console.log(correctAnswerIndex)
 
     questionIndex++;
     answerOptionsIndex++;
     correctAnswerIndex++;
-
 }
 
 console.log(typeof questions[0].correctAnswer)
@@ -151,20 +130,92 @@ function quizEnd() {
     endGame.classList.remove("d-none");
 }
 
+var selectionsArr = [];
+console.log(selectionsArr)
 
 startGameBtn.addEventListener('click', startGame);   //start button initiates the game
-nextBtn.addEventListener('click', setQuestion, counter)       //nextBtn cylces through the question
+nextBtn.addEventListener('click', setQuestion)       //nextBtn cylces through the question
+
+ans0.addEventListener("click", function() {
+    selectionsArr.push(0);
+    console.log(selectionsArr);
+    console.log("ans-0 selected")
+})
+ans1.addEventListener("click", function() {
+    console.log("ans-1 selected");
+    selectionsArr.push(1);
+    console.log(selectionsArr);
+})
+ans2.addEventListener("click", function() {
+    console.log("ans-2 selected");
+    selectionsArr.push(2);
+    console.log(selectionsArr);
+})
+ans3.addEventListener("click", function() {
+    console.log("ans-3 selected");
+    selectionsArr.push(3);
+    console.log(selectionsArr);
+})
 
 
-// ans1.addEventListener("click", function() {
-//     console.log("ans-1 selected")
-// })
-// ans2.addEventListener("click", function() {
-//     console.log("ans-2 selected")
-// })
-// ans3.addEventListener("click", function() {
-//     console.log("ans-3 selected")
-// })
+// function teacher() {
+//     if (document.getElementById(`ans-${j}`).value === questions[j].correctAnswer) {
+//         score++;
+//         console.log("IT WORKED");
+//     }
+// }
+
+
+// for (var j = 0; j < questions.length; j++) {
+//     // console.log(questions[j].correctAnswer)
+//     if (ans0.value === questions[j].correctAnswer) {
+//         console.log("YES")
+//     }
+// }
+
+// for (var j = 0; j < questions.length; j++) {
+//     console.log(questions[j].correctAnswer)
+//     ans0.addEventListener("click", function () {
+//         // console.log(correctAnswerIndex)
+//         if (questions[j].correctAnswer === 0) {
+//             console.log("correct answer", questions[j].correctAnswer)
+//             nextQ.classList.remove("d-none")
+//         }
+//         else {
+//             qNext.classList.remove("d-none")
+//         }
+
+//     })
+//     ans1.addEventListener("click", function () {
+//         if (questions[j].correctAnswer === 1) {
+//             console.log("correct answer", questions[j].correctAnswer)
+//             nextQ.classList.remove("d-none")
+//         }
+//         else {
+//             qNext.classList.remove("d-none")
+//         }
+
+//     })
+//     ans2.addEventListener("click", function () {
+//         if (questions[j].correctAnswer === 2) {
+//             console.log("correct answer", questions[j].correctAnswer)
+//             nextQ.classList.remove("d-none")
+//         }
+//         else {
+//             qNext.classList.remove("d-none")
+//         }
+
+//     })
+//     ans3.addEventListener("click", function () {
+//         if (questions[j].correctAnswer === 3) {
+//             console.log("correct answer", questions[j].correctAnswer)
+//             nextQ.classList.remove("d-none")
+//         }
+//         else {
+//             qNext.classList.remove("d-none")
+//         }
+
+//     })
 
 
 
