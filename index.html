@@ -36,7 +36,7 @@
   </section>
 
   <!-- questions and answers -->
-  <section class="container question-answer">
+  <section class="container question-answer" id="middleSection">
     <div class="row justify-content-center">
       <div>
         <p id="question"></p>
@@ -48,18 +48,22 @@
           <li button class="btn" type="button" id="ans-2" value="2"></li>
           <li button class="btn" type="button" id="ans-3" value="3"></li>
         </ul>
-        <h2 class="d-none" id="next-q">correct</h2>
-        <h2 class="d-none" id="q-next">incorrect</h2>
+        <h2 class="d-none" id="next-q">Answer selected</h2>
+        <h2 class="d-none" id="q-next">Select answer and then click end game to see score!</h2>
       </div>
     </div>
     <div class="row justify-content-center quiz-wrapper">
       <button id="next" class="btn">Next</button>
+      <button id="end-game" class="btn d-none">End Game</button>
     </div>
   </section>
 
   <!-- end page -->
-  <section class="end-game d-none">
-    <h1>GAME OVER</h1>
+ <section id="final" class="d-none row">
+   <h1 id="final-score" class="col-12">hi</h1>
+    <input type="text" class="col-6">
+    <button class="btn">Submit</button>
+ </section>
 
   </section>
 
