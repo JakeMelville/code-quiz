@@ -6,6 +6,15 @@ var welcome = document.getElementById("welcome");
 var highScores = document.getElementById("highscore");
 var qA = document.querySelector(".question-answer");
 var endGameBtn = document.getElementById("end-game");
+var submitBtn = document.getElementById("submit");
+
+var ans0 = document.getElementById("ans-0");
+var ans1 = document.getElementById("ans-1");
+var ans2 = document.getElementById("ans-2");
+var ans3 = document.getElementById("ans-3");
+
+var nextQ = document.getElementById("next-q");
+var qNext = document.getElementById("q-next");
 
 var questionIndex = 0;      //start index at zero- when the nextBtn is clicked questionIndex++; i then use this number for my if statements 
 var answerOptionsIndex = 0;
@@ -69,15 +78,6 @@ function countdown() {              //countdown function created using set inter
     }, 1000);
 }
 
-var ans0 = document.getElementById("ans-0");
-var ans1 = document.getElementById("ans-1");
-var ans2 = document.getElementById("ans-2");
-var ans3 = document.getElementById("ans-3");
-var counter = document.querySelector(".counter");
-var nextQ = document.getElementById("next-q");
-var qNext = document.getElementById("q-next");
-
-
 console.log(ans0.value)
 
 
@@ -93,19 +93,19 @@ function setQuestion() {
     for (var i = 0; i < 4; i++) {
         // console.log(questionIndex[i].answers);
         document.getElementById(`ans-${i}`).textContent = questions[answerOptionsIndex].answers[i];
-        questions[questionIndex].correctAnswer;  
+        questions[questionIndex].correctAnswer;
     }
-    
+
     questionIndex++;
     answerOptionsIndex++;
     correctAnswerIndex++;
 
     if (questionIndex === 5) {
-        return checkAnswer();
+        return finalQuestion();
     }
 }
 
-console.log(typeof questions[0].correctAnswer)
+// console.log(typeof questions[0].correctAnswer)
 
 function quizEnd() {
     endGame.classList.remove("d-none");
@@ -115,54 +115,71 @@ var score = 0;
 function checkAnswer(arr1, arr2) {
     arr1 = correctSelections;
     arr2 = selectionsArr;
-    document.getElementById("end-game").classList.remove("d-none");
-    document.getElementById("next").classList.add("d-none");
-    var score = 0;
-    for (let i = 0; i < 5; i++){
-        if(selectionsArr[i] === correctSelections[i]) {
+    // var score = 0;
+    for (let i = 0; i < 6; i++) {
+        if (selectionsArr[i] === correctSelections[i]) {
             score++
-            return score;
+            // console.log(score);
         }
     }
 }
 console.log(score);
 
+function finalQuestion() {
+    document.getElementById("end-game").classList.remove("d-none");
+    document.getElementById("next").classList.add("d-none");
+    return checkAnswer();
+}
+
+var inputInitials = document.getElementById("inputVal");
+// var hsScore = document.getElementById("postQuizScore");
+// var hsInit = document.getElementById("postQuizInitials");
+
+function rout() {
+    localStorage.setItem("Score: ", score);
+    localStorage.setItem("Initials: ", inputInitials.value)
+    // const finalQuizScore = getItem(score);
+    // document.getElementById("postQuizInitials").textContent = localstorage.getItem("Initials: ");
+
+
+}
+
 var correctSelections = [0, 2, 1, 1, 3];
 var selectionsArr = [];
 
-function endGame(score) {
-    score = int;
+function endGame() {
     document.getElementById("final").classList.remove("d-none");
-    document.getElementById("final-score").textContent = int;
+    document.getElementById("final-score").textContent = score;
     document.getElementById("welcome").classList.add("d-none");
     document.getElementById("middleSection").classList.add("d-none");
-
+    // scoreCount();
 }
 console.log(selectionsArr)
 
 startGameBtn.addEventListener('click', startGame);   //start button initiates the game
 nextBtn.addEventListener('click', setQuestion)       //nextBtn cylces through the question
 endGameBtn.addEventListener("click", endGame)
+submitBtn.addEventListener("click", rout)
 
-ans0.addEventListener("click", function() {
+ans0.addEventListener("click", function () {
     selectionsArr.push(0);
     console.log(selectionsArr);
     console.log("ans-0 selected");
     nextQ.classList.remove("d-none");
 })
-ans1.addEventListener("click", function() {
+ans1.addEventListener("click", function () {
     console.log("ans-1 selected");
     selectionsArr.push(1);
     console.log(selectionsArr);
     nextQ.classList.remove("d-none");
 })
-ans2.addEventListener("click", function() {
+ans2.addEventListener("click", function () {
     console.log("ans-2 selected");
     selectionsArr.push(2);
     console.log(selectionsArr);
     nextQ.classList.remove("d-none");
 })
-ans3.addEventListener("click", function() {
+ans3.addEventListener("click", function () {
     console.log("ans-3 selected");
     selectionsArr.push(3);
     console.log(selectionsArr);
